@@ -71,7 +71,7 @@ stellar-strkey = { workspace = true }
 stellar-xdr = { workspace = true }
 rust-embed = { version = "8.2.0", features = ["debug-embed"] }
 regex = "1.10.5"
-toml_edit = "0.22.16"
+toml_edit = "0.23.5"
 indexmap = { version = "1.9", features = ["serde"] }
 tempfile = "3.8"
 fs_extra = "1.3"
