@@ -1,0 +1,32 @@
+[package]
+name = "registry"
+description = "A crate for managing and deploying smart contracts on the Soroban blockchain."
+version = "0.1.1"
+authors = ["Aha Labs <hello@theaha.co>"]
+license = "Apache-2.0"
+rust-version = "1.69"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true, features = ["alloc"]}
+admin-sep = { workspace = true}
+semver = { version = "1.0.26", default-features = false }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+stellar-registry = { workspace = true }
+assert_matches = "1.5.0"
+hello_world = { path = "../test/hello_world" }
+
+[package.metadata.loam]
+contract = true
+
+[package.metadata.stellar]
+cargo_inherit = true
+homepage = "theaha.co"
+repository = "https://github.com/theahaco/scaffold-stellar"

@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-slate-950;
+    min-height: 100vh;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+  }
+}
+
+@layer components {
+  /* Primary Button - Dark theme with glow */
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 
+           hover:from-blue-500 hover:via-blue-400 hover:to-indigo-500
+           text-white font-semibold py-3 px-6 rounded-lg 
+           transition-all duration-300 shadow-lg shadow-blue-500/25
+           hover:shadow-xl hover:shadow-blue-500/40
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 
+           hover:opacity-10 transition-opacity duration-500;
+    transform: translateX(-100%);
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    50%, 100% { transform: translateX(200%); }
+  }
+  
+  /* Secondary Button - Dark theme */
+  .btn-secondary {
+    @apply relative bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700/80 
+           text-slate-200 font-semibold py-3 px-6 rounded-lg 
+           border border-slate-700/50 hover:border-blue-500/50
+           transition-all duration-300 shadow-lg
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* Card - Dark glassmorphism */
+  .card {
+    @apply relative bg-slate-900/80 backdrop-blur-xl rounded-xl shadow-2xl 
+           border border-slate-800/50 p-6 overflow-hidden
+           transition-all duration-300 hover:border-slate-700/50;
+  }
+  
+  .card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/5 
+           opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none;
+  }
+  
+  /* Input Field - Dark theme with glow */
+  .input-field {
+    @apply w-full px-4 py-3 bg-slate-900/50 backdrop-blur-sm
+           border border-slate-700/50 rounded-lg text-slate-200
+           focus:outline-none focus:border-blue-500/50 focus:bg-slate-900/70
+           transition-all duration-300 focus:shadow-lg focus:shadow-blue-500/20
+           placeholder:text-slate-500;
+  }
+  
+  /* Gradient Text - Brighter for dark theme */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-300 via-cyan-300 to-indigo-300 
+           bg-clip-text text-transparent font-bold;
+  }
+  
+  /* Text color utilities for dark theme */
+  .text-primary {
+    @apply text-slate-100;
+  }
+  
+  .text-secondary {
+    @apply text-slate-300;
+  }
+  
+  .text-tertiary {
+    @apply text-slate-400;
+  }
+  
+  .text-muted {
+    @apply text-slate-500;
+  }
+  
+  /* Animated Background Gradient */
+  .animated-gradient {
+    background: linear-gradient(-45deg, #6366f1, #3b82f6, #0ea5e9, #06b6d4);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+  }
+  
+  /* Status Badge */
+  .badge-success {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+           bg-gradient-to-r from-emerald-500 to-green-500 text-white
+           shadow-lg shadow-emerald-500/30;
+  }
+  
+  .badge-error {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+           bg-gradient-to-r from-red-500 to-rose-500 text-white
+           shadow-lg shadow-red-500/30;
+  }
+  
+  .badge-warning {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+           bg-gradient-to-r from-amber-500 to-orange-500 text-white
+           shadow-lg shadow-amber-500/30;
+  }
+  
+  /* Shimmer Loading Effect */
+  .shimmer {
+    background: linear-gradient(90deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0.8) 50%, 
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+/* Stellar Wallet Kit Modal Styles */
+/* Modal Overlay */
+[data-stellar-wallet-kit-modal-overlay],
+.stellar-wallet-kit-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Container */
+[data-stellar-wallet-kit-modal],
+.stellar-wallet-kit-modal {
+  background: white !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
+  max-width: 420px !important;
+  width: 90% !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Title */
+[data-stellar-wallet-kit-modal-title],
+.stellar-wallet-kit-modal-title {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  margin-bottom: 24px !important;
+  color: #1f2937 !important;
+  text-align: center !important;
+}
+
+/* Wallet Options Container */
+[data-stellar-wallet-kit-options],
+.stellar-wallet-kit-options {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* Individual Wallet Option */
+[data-stellar-wallet-kit-wallet-option],
+.stellar-wallet-kit-wallet-option {
+  display: flex !important;
+  align-items: center !important;
+  padding: 16px !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: white !important;
+}
+
+[data-stellar-wallet-kit-wallet-option]:hover,
+.stellar-wallet-kit-wallet-option:hover {
+  border-color: #3b82f6 !important;
+  background-color: #eff6ff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Wallet Icon */
+[data-stellar-wallet-kit-wallet-icon],
+.stellar-wallet-kit-wallet-icon {
+  width: 48px !important;
+  height: 48px !important;
+  margin-right: 16px !important;
+  border-radius: 8px !important;
+  object-fit: contain !important;
+}
+
+/* Wallet Name */
+[data-stellar-wallet-kit-wallet-name],
+.stellar-wallet-kit-wallet-name {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  flex: 1 !important;
+}
+
+/* Close Button */
+[data-stellar-wallet-kit-close],
+.stellar-wallet-kit-close {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: 24px !important;
+  cursor: pointer !important;
+  color: #6b7280 !important;
+  padding: 4px !important;
+  line-height: 1 !important;
+}
+
+[data-stellar-wallet-kit-close]:hover,
+.stellar-wallet-kit-close:hover {
+  color: #1f2937 !important;
+}

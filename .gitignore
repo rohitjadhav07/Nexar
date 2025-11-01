@@ -1,0 +1,9 @@
+target/
+.soroban/
+.env
+test_snapshots/
+.stellar/
+.vscode/
+.idea/
+.DS_Store
+node_modules
