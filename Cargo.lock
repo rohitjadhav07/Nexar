@@ -914,7 +914,7 @@ checksum = "ba7a06c0b31fff5ff2e1e7d37dbf940864e2a974b336e1a2938d10af6e8fb283"
 dependencies = [
  "serde",
  "termcolor",
- "unicode-width 0.1.14",
+ "unicode-width 0.2.0",
 ]
 
 [[package]]
@@ -3422,6 +3422,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "multi_asset_router"
+version = "0.1.0"
+dependencies = [
+ "admin-sep",
+ "soroban-sdk 23.0.2 (git+https://github.com/stellar/rs-soroban-sdk?rev=99134976ee1d31fa1fa5db8a63bd1ea66b8abda8)",
+]
+
+[[package]]
 name = "native-tls"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5204,6 +5212,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "social_pay"
+version = "0.1.0"
+dependencies = [
+ "soroban-sdk 23.0.2 (git+https://github.com/stellar/rs-soroban-sdk?rev=99134976ee1d31fa1fa5db8a63bd1ea66b8abda8)",
+]
+
+[[package]]
 name = "socket2"
 version = "0.5.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5915,6 +5930,14 @@ dependencies = [
  "sha2 0.10.9",
  "stellar-strkey 0.0.13",
  "thiserror 1.0.69",
+]
+
+[[package]]
+name = "stellar_agent_pay"
+version = "0.1.0"
+dependencies = [
+ "admin-sep",
+ "soroban-sdk 23.0.2 (git+https://github.com/stellar/rs-soroban-sdk?rev=99134976ee1d31fa1fa5db8a63bd1ea66b8abda8)",
 ]
 
 [[package]]

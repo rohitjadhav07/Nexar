@@ -1,0 +1,25 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="4" r="2" fill="url(#network1)"/>
+  <circle cx="6" cy="12" r="2" fill="url(#network1)"/>
+  <circle cx="18" cy="12" r="2" fill="url(#network1)"/>
+  <circle cx="12" cy="20" r="2" fill="url(#network1)"/>
+  <circle cx="12" cy="12" r="3" fill="url(#network2)"/>
+  <line x1="12" y1="6" x2="12" y2="9" stroke="url(#network3)" stroke-width="2"/>
+  <line x1="10.5" y1="10.5" x2="8" y2="12" stroke="url(#network3)" stroke-width="2"/>
+  <line x1="13.5" y1="10.5" x2="16" y2="12" stroke="url(#network3)" stroke-width="2"/>
+  <line x1="12" y1="15" x2="12" y2="18" stroke="url(#network3)" stroke-width="2"/>
+  <defs>
+    <linearGradient id="network1" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <radialGradient id="network2">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </radialGradient>
+    <linearGradient id="network3" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+</svg>

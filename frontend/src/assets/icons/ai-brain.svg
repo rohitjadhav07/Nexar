@@ -1,0 +1,23 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2C10.8954 2 10 2.89543 10 4V6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6V4C14 2.89543 13.1046 2 12 2Z" fill="url(#brain1)"/>
+  <path d="M8 6C6.89543 6 6 6.89543 6 8V10C6 11.1046 6.89543 12 8 12C9.10457 12 10 11.1046 10 10V8C10 6.89543 9.10457 6 8 6Z" fill="url(#brain1)"/>
+  <path d="M16 6C14.8954 6 14 6.89543 14 8V10C14 11.1046 14.8954 12 16 12C17.1046 12 18 11.1046 18 10V8C18 6.89543 17.1046 6 16 6Z" fill="url(#brain1)"/>
+  <path d="M12 10C10.8954 10 10 10.8954 10 12V14C10 15.1046 10.8954 16 12 16C13.1046 16 14 15.1046 14 14V12C14 10.8954 13.1046 10 12 10Z" fill="url(#brain1)"/>
+  <path d="M8 14C6.89543 14 6 14.8954 6 16V18C6 19.1046 6.89543 20 8 20C9.10457 20 10 19.1046 10 18V16C10 14.8954 9.10457 14 8 14Z" fill="url(#brain1)"/>
+  <path d="M16 14C14.8954 14 14 14.8954 14 16V18C14 19.1046 14.8954 20 16 20C17.1046 20 18 19.1046 18 18V16C18 14.8954 17.1046 14 16 14Z" fill="url(#brain1)"/>
+  <line x1="12" y1="8" x2="12" y2="10" stroke="url(#brain2)" stroke-width="2"/>
+  <line x1="10" y1="10" x2="8" y2="12" stroke="url(#brain2)" stroke-width="2"/>
+  <line x1="14" y1="10" x2="16" y2="12" stroke="url(#brain2)" stroke-width="2"/>
+  <line x1="12" y1="16" x2="8" y2="18" stroke="url(#brain2)" stroke-width="2"/>
+  <line x1="12" y1="16" x2="16" y2="18" stroke="url(#brain2)" stroke-width="2"/>
+  <defs>
+    <linearGradient id="brain1" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="brain2" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -5,6 +5,9 @@ members = [
     "crates/*",
     "contracts/registry",
     "contracts/test/*",
+    "contracts/stellar_agent_pay",
+    "contracts/multi_asset_router",
+    "contracts/social_pay",
     "crates/stellar-scaffold-test/fixtures/contracts/*",
 ]
 

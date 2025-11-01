@@ -1,0 +1,29 @@
+{
+  "name": "stellar-agent-pay",
+  "version": "1.0.0",
+  "description": "AI-Powered Agentic Payment Infrastructure on Stellar",
+  "scripts": {
+    "install:all": "npm install && cd ai-agent && npm install && cd ../frontend && npm install && cd ../api && npm install",
+    "dev": "concurrently \"npm run dev:ai\" \"npm run dev:frontend\"",
+    "dev:ai": "cd ai-agent && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:api": "cd api && npm run dev",
+    "build": "npm run build:ai && npm run build:frontend",
+    "build:ai": "cd ai-agent && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build:contracts": "cargo build --release",
+    "test:contracts": "cargo test",
+    "check:contracts": "cargo check --workspace"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "ai-agent",
+    "frontend",
+    "api"
+  ],
+  "keywords": ["stellar", "ai", "payments", "blockchain", "hackathon"],
+  "author": "StellarAgentPay Team",
+  "license": "MIT"
+}

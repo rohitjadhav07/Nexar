@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String              @id @default(uuid())
+  walletAddress     String              @unique @map("wallet_address")
+  preferredCurrency String              @default("XLM") @map("preferred_currency")
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
+  
+  // Relations
+  sentInvoices      Invoice[]           @relation("InvoiceSender")
+  receivedInvoices  Invoice[]           @relation("InvoiceRecipient")
+  recurringPayments RecurringPayment[]
+  paymentConfigs    PaymentConfig[]
+  commandLogs       CommandLog[]
+
+  @@map("users")
+}
+
+model Invoice {
+  id              String        @id @default(uuid())
+  amount          Decimal       @db.Decimal(20, 7)
+  currency        String
+  recipientId     String        @map("recipient_id")
+  payerId         String?       @map("payer_id")
+  status          String        @default("pending")
+  description     String?
+  blockchainTxId  String?       @map("blockchain_tx_id")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  paidAt          DateTime?     @map("paid_at")
+  expiresAt       DateTime?     @map("expires_at")
+  
+  // Relations
+  recipient       User          @relation("InvoiceRecipient", fields: [recipientId], references: [id])
+  payer           User?         @relation("InvoiceSender", fields: [payerId], references: [id])
+  transactions    Transaction[]
+
+  @@map("invoices")
+}
+
+model Transaction {
+  id            String   @id @default(uuid())
+  invoiceId     String?  @map("invoice_id")
+  fromAddress   String   @map("from_address")
+  toAddress     String   @map("to_address")
+  amount        Decimal  @db.Decimal(20, 7)
+  currency      String
+  stellarTxHash String   @unique @map("stellar_tx_hash")
+  status        String   @default("pending")
+  type          String
+  createdAt     DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  invoice       Invoice? @relation(fields: [invoiceId], references: [id])
+
+  @@map("transactions")
+}
+
+model RecurringPayment {
+  id           String   @id @default(uuid())
+  payerId      String   @map("payer_id")
+  recipientId  String   @map("recipient_id")
+  amount       Decimal  @db.Decimal(20, 7)
+  currency     String
+  intervalDays Int      @map("interval_days")
+  nextPayment  DateTime @map("next_payment")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  payer        User     @relation(fields: [payerId], references: [id])
+
+  @@map("recurring_payments")
+}
+
+model PaymentConfig {
+  id                 String   @id @default(uuid())
+  userId             String   @map("user_id")
+  preferredCurrency  String   @default("XLM") @map("preferred_currency")
+  autoRefundEnabled  Boolean  @default(false) @map("auto_refund_enabled")
+  refundWindowHours  Int      @default(24) @map("refund_window_hours")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+  
+  // Relations
+  user               User     @relation(fields: [userId], references: [id])
+
+  @@map("payment_configs")
+}
+
+model CommandLog {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  command      String
+  parsedIntent String?  @map("parsed_intent")
+  confidence   Decimal? @db.Decimal(3, 2)
+  success      Boolean?
+  response     String?
+  createdAt    DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@map("command_logs")
+}
