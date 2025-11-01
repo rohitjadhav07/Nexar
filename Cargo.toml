@@ -27,7 +27,7 @@ admin-sep = { git = "https://github.com/theahaco/admin-sep", rev = "0a33529733d7
 stellar-xdr = "23.0.0"
 stellar-strkey = "0.0.13"
 
-cargo_metadata = "0.18.1"
+cargo_metadata = "0.23.0"
 thiserror = "1.0.38"
 sha2 = "0.10.8"
 
