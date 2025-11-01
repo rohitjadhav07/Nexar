@@ -5701,7 +5701,7 @@ version = "0.0.4"
 dependencies = [
  "cargo_metadata",
  "sha2 0.10.9",
- "thiserror 1.0.69",
+ "thiserror 2.0.12",
  "topological-sort",
 ]
 
@@ -5759,7 +5759,7 @@ dependencies = [
  "stellar-rpc-client",
  "stellar-scaffold-test",
  "stellar-strkey 0.0.13",
- "thiserror 1.0.69",
+ "thiserror 2.0.12",
  "tokio 1.44.2",
 ]
 
@@ -5833,7 +5833,7 @@ dependencies = [
  "symlink",
  "tar",
  "tempfile",
- "thiserror 1.0.69",
+ "thiserror 2.0.12",
  "tokio 1.44.2",
  "tokio-stream",
  "toml",
