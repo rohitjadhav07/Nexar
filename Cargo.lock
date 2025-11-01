@@ -5758,7 +5758,7 @@ dependencies = [
  "soroban-spec-tools",
  "stellar-rpc-client",
  "stellar-scaffold-test",
- "stellar-strkey 0.0.13",
+ "stellar-strkey 0.0.14",
  "thiserror 1.0.69",
  "tokio 1.44.2",
 ]
@@ -5827,7 +5827,7 @@ dependencies = [
  "stellar-build",
  "stellar-rpc-client",
  "stellar-scaffold-test",
- "stellar-strkey 0.0.13",
+ "stellar-strkey 0.0.14",
  "stellar-xdr",
  "strsim 0.11.1",
  "symlink",
@@ -5853,7 +5853,7 @@ dependencies = [
  "regex",
  "sha2 0.10.9",
  "stellar-build",
- "stellar-strkey 0.0.13",
+ "stellar-strkey 0.0.14",
  "stellar-xdr",
  "syn 2.0.100",
 ]
@@ -5903,6 +5903,16 @@ name = "stellar-strkey"
 version = "0.0.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ee1832fb50c651ad10f734aaf5d31ca5acdfb197a6ecda64d93fcdb8885af913"
+dependencies = [
+ "crate-git-revision",
+ "data-encoding",
+]
+
+[[package]]
+name = "stellar-strkey"
+version = "0.0.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4b7f19b1c8a8b98616479c71669633456b567898aef7c5367489c982dcb58a1"
 dependencies = [
  "crate-git-revision",
  "data-encoding",
