@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { useQuery } from '@tanstack/react-query'
 import { useWallet } from '../contexts/WalletContext'
 import { Link } from 'react-router-dom'
@@ -43,10 +44,15 @@ const RecentTransactions: React.FC = () => {
   }
 
   return (
-    <div className="card">
+    <motion.div 
+      className="card"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4, duration: 0.5 }}
+    >
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-slate-100">Recent Transactions</h3>
-        <Link to="/transactions" className="text-sm text-blue-400 hover:text-blue-300 font-medium">
+        <Link to="/analytics" className="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors">
           View All →
         </Link>
       </div>
@@ -57,8 +63,15 @@ const RecentTransactions: React.FC = () => {
         </div>
       ) : transactions && transactions.length > 0 ? (
         <div className="space-y-3">
-          {transactions.map((tx: any) => (
-            <div key={tx.id} className="flex items-center justify-between p-4 rounded-lg border border-slate-800/50 hover:bg-slate-800/30 hover:border-slate-700/50 transition-all">
+          {transactions.map((tx: any, index: number) => (
+            <motion.div
+              key={tx.id}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.3 }}
+              whileHover={{ scale: 1.02, x: 5 }}
+            >
+              <div className="flex items-center justify-between p-4 rounded-lg border border-slate-800/50 hover:bg-slate-800/30 hover:border-slate-700/50 transition-all">
               <div className="flex items-center space-x-3">
                 {tx.source_account === wallet.publicKey ? (
                   <div className="p-2 bg-red-500/10 rounded-lg">
@@ -96,7 +109,8 @@ const RecentTransactions: React.FC = () => {
                   {tx.successful ? 'Success' : 'Failed'}
                 </span>
               </div>
-            </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       ) : (
@@ -105,7 +119,7 @@ const RecentTransactions: React.FC = () => {
           <p className="text-slate-400">No transactions yet</p>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

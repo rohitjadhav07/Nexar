@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { WalletProvider } from './contexts/WalletContext'
 import { CommandProvider } from './contexts/CommandContext'
 import Layout from './components/Layout'
+import LoadingScreen from './components/LoadingScreen'
 import Dashboard from './pages/Dashboard'
 import Analytics from './pages/Analytics'
 import Invoices from './pages/Invoices'
@@ -13,6 +14,25 @@ import PayInvoice from './pages/PayInvoice'
 import ToastContainer from './components/ToastContainer'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Check if user has seen loading screen before
+    const hasSeenLoading = sessionStorage.getItem('hasSeenLoading')
+    if (hasSeenLoading) {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+    sessionStorage.setItem('hasSeenLoading', 'true')
+  }
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />
+  }
+
   return (
     <WalletProvider>
       <CommandProvider>

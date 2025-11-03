@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useWallet } from '../contexts/WalletContext'
+import { motion } from 'framer-motion'
 import WalletButton from './WalletButton'
+import AnimatedBackground from './AnimatedBackground'
 import { 
   HomeIcon, 
   CreditCardIcon, 
@@ -32,7 +34,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Animated Background */}
+      <AnimatedBackground />
+      
       {/* Header - Dark theme */}
       <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-xl shadow-2xl border-b border-slate-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +46,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="relative">
                 <img src={Logo} alt="Nexar" className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-blue-500/20 blur-xl group-hover:bg-blue-500/40 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-blue-500/20 blur-xl group-hover:bg-blue-500/40 transition-all duration-300 pointer-events-none"></div>
               </div>
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-slate-100 group-hover:text-white transition-colors duration-300">
@@ -53,7 +58,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </Link>
 
-            {/* Navigation - Dark theme */}
+            {/* Navigation */}
             <nav className="hidden md:flex space-x-1">
               {navigation.map((item) => {
                 const isActive = location.pathname === item.href || 
@@ -73,7 +78,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     }`} />
                     {item.name}
                     {isActive && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-40 -z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-40 -z-10 pointer-events-none"></div>
                     )}
                   </Link>
                 )
@@ -87,7 +92,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
         {children}
       </main>
 
@@ -106,7 +111,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 }`}
               >
                 {isActive && (
-                  <div className="absolute inset-0 bg-blue-500/10 rounded-lg"></div>
+                  <div className="absolute inset-0 bg-blue-500/10 rounded-lg pointer-events-none"></div>
                 )}
                 <item.icon className={`h-6 w-6 transition-transform duration-300 ${
                   isActive ? 'scale-110' : ''

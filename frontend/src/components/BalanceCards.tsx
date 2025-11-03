@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { useWallet } from '../contexts/WalletContext'
 import { ArrowPathIcon } from '@heroicons/react/24/outline'
 
@@ -39,13 +40,26 @@ const BalanceCards: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {wallet.balances.map((balance, index) => (
-        <div 
-          key={balance.asset} 
+        <motion.div 
+          key={balance.asset}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
           className="relative group"
-          style={{ animationDelay: `${index * 100}ms` }}
         >
-          {/* Glow Effect */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${getAssetGradient(balance.asset)} rounded-xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+          {/* Animated Glow Effect */}
+          <motion.div 
+            className={`absolute inset-0 bg-gradient-to-br ${getAssetGradient(balance.asset)} rounded-xl blur-xl opacity-20 pointer-events-none`}
+            animate={{
+              opacity: [0.2, 0.4, 0.2],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut'
+            }}
+          />
           
           {/* Content */}
           <div className="relative card border-slate-800/50 group-hover:border-slate-700/50 p-6">
@@ -69,18 +83,29 @@ const BalanceCards: React.FC = () => {
             </div>
             
             <div className="space-y-2">
-              <p className="text-4xl font-black text-slate-100">
+              <motion.p 
+                className="text-4xl font-black text-slate-100"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: index * 0.1 + 0.3, type: 'spring' }}
+              >
                 {balance.balance.toFixed(2)}
-              </p>
+              </motion.p>
               <p className="text-sm text-slate-500 font-mono">
                 {balance.balance.toFixed(7)} {balance.asset}
               </p>
             </div>
 
-            {/* Decorative Line */}
-            <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${getAssetGradient(balance.asset)} opacity-50`}></div>
+            {/* Animated Decorative Line */}
+            <motion.div 
+              className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${getAssetGradient(balance.asset)} pointer-events-none`}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
+              style={{ transformOrigin: 'left' }}
+            />
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   )

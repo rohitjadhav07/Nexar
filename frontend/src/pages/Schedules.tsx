@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { useWallet } from '../contexts/WalletContext'
 import { scheduleService, ScheduledPayment, ScheduleFrequency } from '../services/ScheduleService'
 import { notificationService } from '../services/NotificationService'
+import AnimatedModal from '../components/AnimatedModal'
 import {
   CalendarIcon,
   PlusIcon,
@@ -334,11 +336,13 @@ const Schedules: React.FC = () => {
       )}
 
       {/* Create Schedule Modal */}
-      {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-slate-900/95 backdrop-blur-xl rounded-xl p-6 max-w-md w-full mx-4 border border-slate-800/50 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Create Schedule</h3>
-            <div className="space-y-4">
+      <AnimatedModal
+        isOpen={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        title="Create Schedule"
+        size="md"
+      >
+        <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">Recipient Address</label>
                 <input
@@ -402,25 +406,27 @@ const Schedules: React.FC = () => {
                   className="input-field w-full"
                 />
               </div>
-              <div className="flex space-x-3 pt-4">
-                <button
-                  onClick={() => setShowCreateModal(false)}
-                  className="btn-secondary flex-1"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleCreateSchedule}
-                  disabled={!toAddress || !amount || !description || !startDate}
-                  className="btn-primary flex-1"
-                >
-                  Create Schedule
-                </button>
-              </div>
-            </div>
+          <div className="flex space-x-3 pt-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowCreateModal(false)}
+              className="btn-secondary flex-1"
+            >
+              Cancel
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleCreateSchedule}
+              disabled={!toAddress || !amount || !description || !startDate}
+              className="btn-primary flex-1"
+            >
+              Create Schedule
+            </motion.button>
           </div>
         </div>
-      )}
+      </AnimatedModal>
     </div>
   )
 }

@@ -1,9 +1,11 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { useWallet } from '../contexts/WalletContext'
 import CommandInterface from '../components/CommandInterface'
 import BalanceCards from '../components/BalanceCards'
 import RecentTransactions from '../components/RecentTransactions'
 import QuickActions from '../components/QuickActions'
+import GlowCard from '../components/GlowCard'
 import AIBrainIcon from '../assets/icons/ai-brain.svg'
 import WalletIcon from '../assets/icons/wallet.svg'
 import NetworkIcon from '../assets/icons/network.svg'
@@ -16,7 +18,7 @@ const Dashboard: React.FC = () => {
     return (
       <div className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Animated Background Orbs - Dark theme */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
@@ -37,17 +39,22 @@ const Dashboard: React.FC = () => {
               Connect your Stellar wallet to unlock intelligent payment automation with natural language commands
             </p>
 
-            {/* Feature Cards */}
+            {/* Feature Cards with animations */}
             <div className="grid md:grid-cols-3 gap-6 mb-16">
-              <div className="card group hover:border-blue-500/30 transition-all duration-300">
-                <div className="mb-4 flex justify-center">
-                  <img src={AIBrainIcon} alt="AI Assistant" className="h-16 w-16 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="font-bold text-lg text-slate-200 mb-2">AI Assistant</h3>
+              <GlowCard glowColor="blue" className="text-center">
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.2, type: 'spring' }}
+                  className="mb-4 flex justify-center"
+                >
+                  <img src={AIBrainIcon} alt="AI Assistant" className="h-16 w-16 animate-float" />
+                </motion.div>
+                <h3 className="font-bold text-lg text-slate-200 mb-2 neon-blue">AI Assistant</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">
                   Natural language commands for seamless payments
                 </p>
-              </div>
+              </GlowCard>
               <div className="card group hover:border-blue-500/30 transition-all duration-300">
                 <div className="mb-4 flex justify-center">
                   <img src={NetworkIcon} alt="Social Payments" className="h-16 w-16 group-hover:scale-110 transition-transform duration-300" />
@@ -92,7 +99,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-8 relative">
       {/* Subtle Background Decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
       {/* Welcome Section */}
       <div className="relative">
