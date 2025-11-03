@@ -8,6 +8,7 @@ import Analytics from './pages/Analytics'
 import Invoices from './pages/Invoices'
 import Schedules from './pages/Schedules'
 import Social from './pages/Social'
+import BluetoothPayment from './pages/BluetoothPayment'
 import PayInvoice from './pages/PayInvoice'
 import ToastContainer from './components/ToastContainer'
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/schedules" element={<Schedules />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/social" element={<Social />} />
+                <Route path="/bluetooth" element={<BluetoothPayment />} />
                 
                 {/* Redirect old routes to new structure */}
                 <Route path="/transactions" element={<Navigate to="/analytics" replace />} />
