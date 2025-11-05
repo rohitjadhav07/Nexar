@@ -210,50 +210,14 @@ html {
   }
 }
 
-/* Enhanced card styles with animations */
+/* Simple card styles */
 .card {
-  @apply relative bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-6 shadow-2xl overflow-hidden;
-  transition: all 0.3s ease;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  padding: 2px;
-  background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.3), transparent);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.card:hover::before {
-  opacity: 1;
-  animation: spin-slow 3s linear infinite;
+  @apply relative bg-slate-900/90 backdrop-blur-xl rounded-xl border border-slate-700/50 p-6 shadow-lg;
+  transition: border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
-}
-
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.card:hover::after {
-  opacity: 1;
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 @layer base {
@@ -275,144 +239,30 @@ html {
 }
 
 @layer components {
-  /* Primary Button - Dark theme with glow */
+  /* Primary Button */
   .btn-primary {
-    @apply relative overflow-hidden bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 
-           hover:from-blue-500 hover:via-blue-400 hover:to-indigo-500
+    @apply bg-blue-600 hover:bg-blue-500
            text-white font-semibold py-3 px-6 rounded-lg 
-           transition-all duration-300 shadow-lg shadow-blue-500/25
-           hover:shadow-xl hover:shadow-blue-500/40
+           transition-colors duration-200
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
-  .btn-primary::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 
-           hover:opacity-10 transition-opacity duration-500;
-    transform: translateX(-100%);
-    animation: shine 3s infinite;
-    pointer-events: none;
-  }
-  
-  @keyframes shine {
-    0% { transform: translateX(-100%); }
-    50%, 100% { transform: translateX(200%); }
-  }
-  
-  /* Secondary Button - Dark theme */
+  /* Secondary Button */
   .btn-secondary {
-    @apply relative bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700/80 
+    @apply bg-slate-800 hover:bg-slate-700 
            text-slate-200 font-semibold py-3 px-6 rounded-lg 
-           border border-slate-700/50 hover:border-blue-500/50
-           transition-all duration-300 shadow-lg
+           border border-slate-700 hover:border-slate-600
+           transition-colors duration-200
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
-  /* Card - Dark glassmorphism */
-  .card {
-    @apply relative bg-slate-900/80 backdrop-blur-xl rounded-xl shadow-2xl 
-           border border-slate-800/50 p-6 overflow-hidden
-           transition-all duration-300 hover:border-slate-700/50;
-  }
-  
-  /* Input Field - Dark theme with glow */
+  /* Input Field */
   .input-field {
-    @apply w-full px-4 py-3 bg-slate-900/50 backdrop-blur-sm
-           border border-slate-700/50 rounded-lg text-slate-200
-           focus:outline-none focus:border-blue-500/50 focus:bg-slate-900/70
-           transition-all duration-300 focus:shadow-lg focus:shadow-blue-500/20
+    @apply w-full px-4 py-3 bg-slate-900
+           border border-slate-700 rounded-lg text-slate-200
+           focus:outline-none focus:border-blue-500
+           transition-colors duration-200
            placeholder:text-slate-500;
-  }
-  
-  /* Gradient Text - Brighter for dark theme */
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-300 via-cyan-300 to-indigo-300 
-           bg-clip-text text-transparent font-bold;
-  }
-  
-  /* Text color utilities for dark theme */
-  .text-primary {
-    @apply text-slate-100;
-  }
-  
-  .text-secondary {
-    @apply text-slate-300;
-  }
-  
-  .text-tertiary {
-    @apply text-slate-400;
-  }
-  
-  .text-muted {
-    @apply text-slate-500;
-  }
-  
-  /* Animated Background Gradient */
-  .animated-gradient {
-    background: linear-gradient(-45deg, #6366f1, #3b82f6, #0ea5e9, #06b6d4);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-  }
-  
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  /* Floating Animation */
-  .float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  /* Pulse Glow */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-  
-  @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
-  }
-  
-  /* Status Badge */
-  .badge-success {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
-           bg-gradient-to-r from-emerald-500 to-green-500 text-white
-           shadow-lg shadow-emerald-500/30;
-  }
-  
-  .badge-error {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
-           bg-gradient-to-r from-red-500 to-rose-500 text-white
-           shadow-lg shadow-red-500/30;
-  }
-  
-  .badge-warning {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
-           bg-gradient-to-r from-amber-500 to-orange-500 text-white
-           shadow-lg shadow-amber-500/30;
-  }
-  
-  /* Shimmer Loading Effect */
-  .shimmer {
-    background: linear-gradient(90deg, 
-      rgba(255,255,255,0) 0%, 
-      rgba(255,255,255,0.8) 50%, 
-      rgba(255,255,255,0) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
-  }
-  
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
   }
 }
 
