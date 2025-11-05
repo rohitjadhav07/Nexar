@@ -49,10 +49,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="absolute inset-0 bg-blue-500/20 blur-xl group-hover:bg-blue-500/40 transition-all duration-300 pointer-events-none"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold text-slate-100 group-hover:text-white transition-colors duration-300">
+                <span className="text-lg font-bold text-white">
                   Nexar
                 </span>
-                <span className="text-xs text-slate-500 font-medium">
+                <span className="text-xs text-slate-400 font-medium">
                   Next-Gen Stellar Payments
                 </span>
               </div>
