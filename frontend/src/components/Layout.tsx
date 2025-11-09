@@ -10,8 +10,7 @@ import {
   ChartBarIcon,
   UserGroupIcon,
   ChartPieIcon,
-  ClockIcon,
-  SignalIcon
+  ClockIcon
 } from '@heroicons/react/24/outline'
 import Logo from '../assets/logo.svg'
 
@@ -28,7 +27,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Dashboard', href: '/', icon: HomeIcon },
     { name: 'Invoices', href: '/invoices', icon: CreditCardIcon },
     { name: 'Schedules', href: '/schedules', icon: ClockIcon },
-    { name: 'Bluetooth', href: '/bluetooth', icon: SignalIcon },
     { name: 'Analytics', href: '/analytics', icon: ChartPieIcon },
     { name: 'Social', href: '/social', icon: UserGroupIcon },
   ]
