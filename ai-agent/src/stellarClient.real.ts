@@ -1,4 +1,6 @@
-import { 
+import * as StellarSdk from 'stellar-sdk';
+
+const { 
   Server, 
   Keypair, 
   Networks, 
@@ -6,12 +8,11 @@ import {
   Operation, 
   Asset,
   Contract,
-  SorobanRpc,
   xdr,
   scValToNative,
   nativeToScVal,
-  Address as StellarAddress
-} from 'stellar-sdk';
+  Address: StellarAddress
+} = StellarSdk;
 import { PaymentCommand, StellarTransaction, Invoice } from './types';
 
 export class StellarClient {
@@ -81,9 +82,9 @@ export class StellarClient {
       } else {
         throw new Error('Transaction failed');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error creating invoice:', error);
-      throw new Error(`Failed to create invoice: ${error.message}`);
+      throw new Error(`Failed to create invoice: ${error?.message || 'Unknown error'}`);
     }
   }
 
@@ -131,9 +132,9 @@ export class StellarClient {
 
       console.log(`✅ Processed payment for invoice ${invoiceId}`);
       return stellarTx;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error processing payment:', error);
-      throw new Error(`Failed to process payment: ${error.message}`);
+      throw new Error(`Failed to process payment: ${error?.message || 'Unknown error'}`);
     }
   }
 
@@ -184,9 +185,9 @@ export class StellarClient {
 
       console.log(`✅ Executed refund for invoice ${invoiceId}`);
       return stellarTx;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error executing refund:', error);
-      throw new Error(`Failed to execute refund: ${error.message}`);
+      throw new Error(`Failed to execute refund: ${error?.message || 'Unknown error'}`);
     }
   }
 
@@ -240,9 +241,9 @@ export class StellarClient {
       } else {
         throw new Error('Transaction failed');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error scheduling recurring payment:', error);
-      throw new Error(`Failed to schedule recurring payment: ${error.message}`);
+      throw new Error(`Failed to schedule recurring payment: ${error?.message || 'Unknown error'}`);
     }
   }
 
@@ -361,9 +362,9 @@ export class StellarClient {
       }
       
       throw new Error('Failed to get swap quote');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error estimating swap:', error);
-      throw new Error(`Failed to estimate swap: ${error.message}`);
+      throw new Error(`Failed to estimate swap: ${error?.message || 'Unknown error'}`);
     }
   }
 
@@ -423,9 +424,9 @@ export class StellarClient {
 
       console.log(`✅ Executed swap: ${amount} ${fromAsset} -> ${toAsset}`);
       return stellarTx;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error executing swap:', error);
-      throw new Error(`Failed to execute swap: ${error.message}`);
+      throw new Error(`Failed to execute swap: ${error?.message || 'Unknown error'}`);
     }
   }
 }

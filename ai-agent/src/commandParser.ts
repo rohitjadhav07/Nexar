@@ -10,6 +10,7 @@ export class CommandParser {
   constructor(apiKey: string) {
     this.llm = new ChatGoogleGenerativeAI({
       apiKey: apiKey,
+      model: 'gemini-pro',
       temperature: 0.1,
     });
 
