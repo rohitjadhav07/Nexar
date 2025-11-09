@@ -1,22 +1,21 @@
-import * as StellarSdk from 'stellar-sdk';
+import StellarSdk from 'stellar-sdk';
+import type { Server as ServerType, Keypair as KeypairType } from 'stellar-sdk';
 
-const { 
-  Server, 
-  Keypair, 
-  Networks, 
-  TransactionBuilder, 
-  Operation, 
-  Asset,
-  Contract,
-  xdr,
-  scValToNative,
-  nativeToScVal,
-  Address: StellarAddress
-} = StellarSdk;
+const Server = StellarSdk.Server || (StellarSdk as any).default?.Server;
+const Keypair = StellarSdk.Keypair || (StellarSdk as any).default?.Keypair;
+const Networks = StellarSdk.Networks || (StellarSdk as any).default?.Networks;
+const TransactionBuilder = StellarSdk.TransactionBuilder || (StellarSdk as any).default?.TransactionBuilder;
+const Operation = StellarSdk.Operation || (StellarSdk as any).default?.Operation;
+const Asset = StellarSdk.Asset || (StellarSdk as any).default?.Asset;
+const Contract = StellarSdk.Contract || (StellarSdk as any).default?.Contract;
+const xdr = StellarSdk.xdr || (StellarSdk as any).default?.xdr;
+const scValToNative = StellarSdk.scValToNative || (StellarSdk as any).default?.scValToNative;
+const nativeToScVal = StellarSdk.nativeToScVal || (StellarSdk as any).default?.nativeToScVal;
+const StellarAddress = StellarSdk.Address || (StellarSdk as any).default?.Address;
 import { PaymentCommand, StellarTransaction, Invoice } from './types';
 
 export class StellarClient {
-  private server: Server;
+  private server: any;
   private networkPassphrase: string;
   private paymentContractId: string;
   private routerContractId: string;
@@ -36,7 +35,7 @@ export class StellarClient {
   /**
    * Create an invoice on the blockchain
    */
-  async createInvoice(command: PaymentCommand, creatorKeypair: Keypair): Promise<string> {
+  async createInvoice(command: PaymentCommand, creatorKeypair: any): Promise<string> {
     try {
       const account = await this.server.loadAccount(creatorKeypair.publicKey());
       const contract = new Contract(this.paymentContractId);
@@ -91,7 +90,7 @@ export class StellarClient {
   /**
    * Process payment for an invoice
    */
-  async processPayment(invoiceId: string, payerKeypair: Keypair): Promise<StellarTransaction> {
+  async processPayment(invoiceId: string, payerKeypair: any): Promise<StellarTransaction> {
     try {
       const account = await this.server.loadAccount(payerKeypair.publicKey());
       const contract = new Contract(this.paymentContractId);
@@ -144,7 +143,7 @@ export class StellarClient {
   async executeRefund(
     invoiceId: string, 
     reason: string, 
-    refunderKeypair: Keypair
+    refunderKeypair: any
   ): Promise<StellarTransaction> {
     try {
       const account = await this.server.loadAccount(refunderKeypair.publicKey());
@@ -196,7 +195,7 @@ export class StellarClient {
    */
   async scheduleRecurringPayment(
     command: PaymentCommand, 
-    payerKeypair: Keypair
+    payerKeypair: any
   ): Promise<string> {
     try {
       const account = await this.server.loadAccount(payerKeypair.publicKey());
@@ -376,7 +375,7 @@ export class StellarClient {
     toAsset: string,
     amount: number,
     minAmountOut: number,
-    payerKeypair: Keypair
+    payerKeypair: any
   ): Promise<StellarTransaction> {
     try {
       const account = await this.server.loadAccount(payerKeypair.publicKey());
