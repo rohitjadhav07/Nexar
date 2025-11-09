@@ -10,7 +10,7 @@ import { searchUsername } from '../utils/socialContract'
 import { groupService } from '../services/GroupService'
 import { splitPaymentInGroup } from '../utils/groupPayments'
 import { receiptService } from '../services/ReceiptService'
-import axios from 'axios'
+import { aiAgentApi } from '../config/api'
 
 interface CommandMessage {
   id: string
@@ -49,7 +49,7 @@ const CommandInterface: React.FC = () => {
 
   const sendCommandMutation = useMutation(
     async (command: string): Promise<AgentResponse> => {
-      const response = await axios.post('/api/command', { 
+      const response = await aiAgentApi.post('/api/command', { 
         command,
         userPublicKey: wallet?.publicKey 
       })
