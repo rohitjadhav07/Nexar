@@ -502,7 +502,46 @@ vercel --prod
 # 3. Add environment variables in Vercel dashboard
 VITE_STELLAR_NETWORK=testnet
 VITE_STELLAR_HORIZON_URL=https://horizon-testnet.stellar.org
+VITE_AI_AGENT_URL=https://your-backend.onrender.com
 ```
+
+### Backend AI Agent (Render/Railway)
+
+**Option 1: Render (Recommended)**
+
+1. Go to [Render Dashboard](https://dashboard.render.com/)
+2. New Web Service → Connect GitHub
+3. Select repository, root directory: `ai-agent`
+4. Build: `npm install && npm run build`
+5. Start: `npm start`
+6. Add environment variables:
+   ```
+   GEMINI_API_KEY=your_gemini_key
+   STELLAR_HORIZON_URL=https://horizon-testnet.stellar.org
+   STELLAR_NETWORK=testnet
+   PORT=3001
+   ```
+
+**Option 2: Railway**
+
+```bash
+cd ai-agent
+railway login
+railway init
+railway up
+```
+
+**Option 3: Docker**
+
+```bash
+cd ai-agent
+docker build -t nexar-ai-agent .
+docker run -p 3001:3001 \
+  -e GEMINI_API_KEY=your_key \
+  nexar-ai-agent
+```
+
+📖 **Full deployment guide**: [ai-agent/DEPLOYMENT.md](./ai-agent/DEPLOYMENT.md)
 
 ### Smart Contracts (Stellar)
 

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: nexar-ai-agent
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: STELLAR_HORIZON_URL
+        value: https://horizon-testnet.stellar.org
+      - key: STELLAR_NETWORK
+        value: testnet
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PAYMENT_CONTRACT_ID
+        sync: false
+      - key: ROUTER_CONTRACT_ID
+        sync: false
