@@ -1,5 +1,4 @@
 import StellarSdk from 'stellar-sdk';
-import type { Server as ServerType, Keypair as KeypairType } from 'stellar-sdk';
 
 const Server = StellarSdk.Server || (StellarSdk as any).default?.Server;
 const Keypair = StellarSdk.Keypair || (StellarSdk as any).default?.Keypair;
