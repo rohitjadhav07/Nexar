@@ -11,7 +11,7 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-[Live Demo](https://nexar.vercel.app) • [Documentation](#documentation) • [API Docs](#api-reference)
+[Live Demo](https://nexar-alpha.vercel.app) • [Documentation](#documentation) • [API Docs](#api-reference)
 
 </div>
 
@@ -19,15 +19,14 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Architecture](#architecture)
-- [Technology Stack](#technology-stack)
-- [Getting Started](#getting-started)
-- [Deployment](#deployment)
-- [API Reference](#api-reference)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Architecture](#️-architecture)
+- [Technology Stack](#️-technology-stack)
+- [Getting Started](#-getting-started)
+- [Deployment](#-deployment)
+- [API Reference](#-api-reference)
+- [License](#-license)
 
 ---
 
@@ -519,15 +518,7 @@ https://stellar.expert/explorer/testnet/tx/{transaction_hash}
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ---
 
@@ -564,7 +555,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
-- **Live Demo**: https://nexar.vercel.app
+- **Live Demo**: https://nexar-alpha.vercel.app
 - **Backend API**: https://nexar-8gu2.onrender.com
 - **GitHub**: https://github.com/rohitjadhav07/Nexar
 - **Stellar Explorer**: https://stellar.expert/explorer/testnet
