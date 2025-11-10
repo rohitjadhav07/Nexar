@@ -20,8 +20,8 @@ const Dashboard: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             {/* Hero Title */}
             <div className="mb-12">
-              <h2 className="text-5xl md:text-7xl font-black mb-6">
-                <span className="gradient-text">Nexar</span>
+              <h2 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                Nexar
               </h2>
               <p className="text-xl md:text-2xl text-slate-400 font-medium">
                 Next-Gen AI Payments on Stellar
