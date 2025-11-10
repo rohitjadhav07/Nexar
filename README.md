@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![Nexar Banner](https://via.placeholder.com/1200x300/0F172A/3B82F6?text=Nexar+-+AI-Powered+Stellar+Payments)
-
 **Intelligent Payment Infrastructure Built on Stellar Blockchain**
 
 [![Stellar](https://img.shields.io/badge/Stellar-Testnet-7B68EE?style=for-the-badge&logo=stellar)](https://stellar.org)
